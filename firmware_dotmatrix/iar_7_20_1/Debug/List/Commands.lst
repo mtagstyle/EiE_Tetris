@@ -1,0 +1,377 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.70.1.11437/W32 for ARM       22/Mar/2018  01:39:04
+# Copyright 1999-2016 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_common\tetris\Commands.c
+#    Command line =  
+#        "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_common\tetris\Commands.c" -D
+#        MPGL2 -D MPG2 --preprocess=cl "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\Debug\List"
+#        -lC "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\Debug\List"
+#        -o "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\Debug\Obj"
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M3 -e --fpu=None --dlib_config "E:\Software\IAR
+#        Systems\Embedded Workbench 7.5\arm\INC\c\DLib_Config_Normal.h" -I
+#        "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\" -I
+#        "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\bsp\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\drivers\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\application\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\libraries\captouch\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\..\firmware_common\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\..\firmware_common\application\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\..\firmware_common\cmsis\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\..\firmware_common\drivers\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\..\firmware_common\tetris\"
+#        -On --use_c++_inline --require_prototypes -I "E:\Software\IAR
+#        Systems\Embedded Workbench 7.5\arm\CMSIS\Include\"
+#    Locale       =  English_Canada.1252
+#    List file    =  
+#        C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\Debug\List\Commands.lst
+#    Object file  =  
+#        C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\Debug\Obj\Commands.o
+#
+###############################################################################
+
+C:\Users\Anthony\Google Drive\Hobbies\IAR\Razor_Atmel\firmware_common\tetris\Commands.c
+      1          #include <stdlib.h>
+      2          #include "Commands.h"
+
+  #define DEBUG_MODE 0
+          ^
+"C:\Users\Anthony\Google Drive\Hobbies\IAR\Razor_Atmel\firmware_common\tetris\Defs.h",27  Warning[Pe047]: 
+          incompatible redefinition of macro "DEBUG_MODE" (declared at line 27)
+      3          #include "Defs.h"
+      4          
+
+   \                                 In section .bss, align 4
+      5          static _server server;
+   \                     server:
+   \   00000000                      DS8 36
+      6          
+
+   \                                 In section .text, align 2, keep-with-next
+      7          sint32_t channel_open(CHANNEL_TYPES type)
+      8          {
+   \                     channel_open: (+1)
+   \   00000000   0xB538             PUSH     {R3-R5,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+      9              if( type < MAX_CHANNELS)
+   \   00000004   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
+   \   00000006   0x2C03             CMP      R4,#+3
+   \   00000008   0xDA15             BGE.N    ??channel_open_0
+     10              {
+     11                  _channel* channel = &(server.channels[type]);
+   \   0000000A   0x....             LDR.N    R0,??DataTable4
+   \   0000000C   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
+   \   0000000E   0x210C             MOVS     R1,#+12
+   \   00000010   0xFB01 0xF104      MUL      R1,R1,R4
+   \   00000014   0xEB00 0x0501      ADD      R5,R0,R1
+     12                  channel->open = 1;
+   \   00000018   0x2001             MOVS     R0,#+1
+   \   0000001A   0x7268             STRB     R0,[R5, #+9]
+     13                  channel->id = type;
+   \   0000001C   0x722C             STRB     R4,[R5, #+8]
+     14          
+     15                  _circ_buffer* buff = &(channel->buffer);
+     16                  buff->data = malloc(MAX_QUEUE_SIZE*sizeof(_circ_buffer));
+   \   0000001E   0x2050             MOVS     R0,#+80
+   \   00000020   0x.... 0x....      BL       malloc
+   \   00000024   0x6068             STR      R0,[R5, #+4]
+     17                  buff->head = 0;
+   \   00000026   0x2000             MOVS     R0,#+0
+   \   00000028   0x7068             STRB     R0,[R5, #+1]
+     18                  buff->tail = 0;
+   \   0000002A   0x2000             MOVS     R0,#+0
+   \   0000002C   0x70A8             STRB     R0,[R5, #+2]
+     19                  buff->size = 0;
+   \   0000002E   0x2000             MOVS     R0,#+0
+   \   00000030   0x7028             STRB     R0,[R5, #+0]
+     20          
+     21                  return RC_SUCCESS;
+   \   00000032   0x2001             MOVS     R0,#+1
+   \   00000034   0xE001             B.N      ??channel_open_1
+     22              }
+     23          
+     24              return RC_FAIL;
+   \                     ??channel_open_0: (+1)
+   \   00000036   0xF05F 0x30FF      MOVS     R0,#-1
+   \                     ??channel_open_1: (+1)
+   \   0000003A   0xBD32             POP      {R1,R4,R5,PC}    ;; return
+     25          }
+     26          
+
+   \                                 In section .text, align 2, keep-with-next
+     27          sint32_t channel_close(CHANNEL_TYPES type)
+     28          {
+   \                     channel_close: (+1)
+   \   00000000   0xB538             PUSH     {R3-R5,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     29              if( type < MAX_CHANNELS)
+   \   00000004   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
+   \   00000006   0x2C03             CMP      R4,#+3
+   \   00000008   0xDA15             BGE.N    ??channel_close_0
+     30              {
+     31                  _channel* channel = &(server.channels[type]);
+   \   0000000A   0x....             LDR.N    R0,??DataTable4
+   \   0000000C   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
+   \   0000000E   0x210C             MOVS     R1,#+12
+   \   00000010   0xFB01 0xF104      MUL      R1,R1,R4
+   \   00000014   0xEB00 0x0501      ADD      R5,R0,R1
+     32                  channel->open = 0;
+   \   00000018   0x2000             MOVS     R0,#+0
+   \   0000001A   0x7268             STRB     R0,[R5, #+9]
+     33                  channel->id = 0;
+   \   0000001C   0x2000             MOVS     R0,#+0
+   \   0000001E   0x7228             STRB     R0,[R5, #+8]
+     34          
+     35                  _circ_buffer* buff = &(channel->buffer);
+     36                  free(channel->buffer.data);
+   \   00000020   0x6868             LDR      R0,[R5, #+4]
+   \   00000022   0x.... 0x....      BL       free
+     37                  buff->head = 0;
+   \   00000026   0x2000             MOVS     R0,#+0
+   \   00000028   0x7068             STRB     R0,[R5, #+1]
+     38                  buff->tail = 0;
+   \   0000002A   0x2000             MOVS     R0,#+0
+   \   0000002C   0x70A8             STRB     R0,[R5, #+2]
+     39                  buff->size = 0;
+   \   0000002E   0x2000             MOVS     R0,#+0
+   \   00000030   0x7028             STRB     R0,[R5, #+0]
+     40          
+     41                  return RC_SUCCESS;
+   \   00000032   0x2001             MOVS     R0,#+1
+   \   00000034   0xE001             B.N      ??channel_close_1
+     42              }
+     43          
+     44              return RC_FAIL;
+   \                     ??channel_close_0: (+1)
+   \   00000036   0xF05F 0x30FF      MOVS     R0,#-1
+   \                     ??channel_close_1: (+1)
+   \   0000003A   0xBD32             POP      {R1,R4,R5,PC}    ;; return
+     45          }
+     46          
+
+   \                                 In section .text, align 2, keep-with-next
+     47          sint32_t channel_send(CHANNEL_TYPES type, uint8_t value)
+     48          {
+   \                     channel_send: (+1)
+   \   00000000   0xB470             PUSH     {R4-R6}
+   \   00000002   0x0002             MOVS     R2,R0
+     49              //Check if channel is valid
+     50              if( type < MAX_CHANNELS)
+   \   00000004   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \   00000006   0x2A03             CMP      R2,#+3
+   \   00000008   0xDA1C             BGE.N    ??channel_send_0
+     51              {
+     52                  //Check if we are sending to a channel that someone is listening on
+     53                  _channel* channel = &(server.channels[type]);
+   \   0000000A   0x....             LDR.N    R0,??DataTable4
+   \   0000000C   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \   0000000E   0x230C             MOVS     R3,#+12
+   \   00000010   0xFB03 0xF302      MUL      R3,R3,R2
+   \   00000014   0x4403             ADD      R3,R0,R3
+     54                  if(channel->open == 1)
+   \   00000016   0x7A58             LDRB     R0,[R3, #+9]
+   \   00000018   0x2801             CMP      R0,#+1
+   \   0000001A   0xD113             BNE.N    ??channel_send_0
+     55                  {
+     56                      //Check if there is enough room to send the channel
+     57                      _circ_buffer *buff = &(channel->buffer);
+   \   0000001C   0x001C             MOVS     R4,R3
+     58                      if(buff->size < MAX_QUEUE_SIZE)
+   \   0000001E   0x7820             LDRB     R0,[R4, #+0]
+   \   00000020   0x280A             CMP      R0,#+10
+   \   00000022   0xDA0F             BGE.N    ??channel_send_0
+     59                      {
+     60                          buff->data[buff->tail] = value;
+   \   00000024   0x6860             LDR      R0,[R4, #+4]
+   \   00000026   0x78A5             LDRB     R5,[R4, #+2]
+   \   00000028   0x5541             STRB     R1,[R0, R5]
+     61                          buff->tail = (buff->tail + 1) % MAX_QUEUE_SIZE; //Increase tail length with wraparound
+   \   0000002A   0x78A0             LDRB     R0,[R4, #+2]
+   \   0000002C   0x1C40             ADDS     R0,R0,#+1
+   \   0000002E   0x250A             MOVS     R5,#+10
+   \   00000030   0xFB90 0xF6F5      SDIV     R6,R0,R5
+   \   00000034   0xFB05 0x0016      MLS      R0,R5,R6,R0
+   \   00000038   0x70A0             STRB     R0,[R4, #+2]
+     62                          buff->size++;
+   \   0000003A   0x7820             LDRB     R0,[R4, #+0]
+   \   0000003C   0x1C40             ADDS     R0,R0,#+1
+   \   0000003E   0x7020             STRB     R0,[R4, #+0]
+     63          
+     64                          return RC_SUCCESS;
+   \   00000040   0x2001             MOVS     R0,#+1
+   \   00000042   0xE001             B.N      ??channel_send_1
+     65                      }
+     66                  }
+     67              }
+     68          
+     69              return RC_FAIL;
+   \                     ??channel_send_0: (+1)
+   \   00000044   0xF05F 0x30FF      MOVS     R0,#-1
+   \                     ??channel_send_1: (+1)
+   \   00000048   0xBC70             POP      {R4-R6}
+   \   0000004A   0x4770             BX       LR               ;; return
+     70          }
+     71          
+
+   \                                 In section .text, align 2, keep-with-next
+     72          sint32_t channel_dequeue(CHANNEL_TYPES type)
+     73          {
+   \                     channel_dequeue: (+1)
+   \   00000000   0xB470             PUSH     {R4-R6}
+   \   00000002   0x0001             MOVS     R1,R0
+     74              //Check if channel is valid
+     75              if( type < MAX_CHANNELS )
+   \   00000004   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \   00000006   0x2903             CMP      R1,#+3
+   \   00000008   0xDA1B             BGE.N    ??channel_dequeue_0
+     76              {
+     77                  //Check if we are sending to a channel that someone is listening on
+     78                  _channel* channel = &(server.channels[type]);
+   \   0000000A   0x....             LDR.N    R0,??DataTable4
+   \   0000000C   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \   0000000E   0x220C             MOVS     R2,#+12
+   \   00000010   0xFB02 0xF201      MUL      R2,R2,R1
+   \   00000014   0x4402             ADD      R2,R0,R2
+     79                  if(channel->open == 1)
+   \   00000016   0x7A50             LDRB     R0,[R2, #+9]
+   \   00000018   0x2801             CMP      R0,#+1
+   \   0000001A   0xD112             BNE.N    ??channel_dequeue_0
+     80                  {
+     81                      //Check if there is anything in the buffer to read
+     82                      _circ_buffer *buff = &(channel->buffer);
+   \   0000001C   0x0013             MOVS     R3,R2
+     83                      if(buff->size > 0)
+   \   0000001E   0x7818             LDRB     R0,[R3, #+0]
+   \   00000020   0x2800             CMP      R0,#+0
+   \   00000022   0xD00E             BEQ.N    ??channel_dequeue_0
+     84                      {
+     85                          sint32_t toReturn = buff->data[buff->head];
+   \   00000024   0x6858             LDR      R0,[R3, #+4]
+   \   00000026   0x785C             LDRB     R4,[R3, #+1]
+   \   00000028   0x5D00             LDRB     R0,[R0, R4]
+     86                          buff->head = (buff->head + 1) % MAX_QUEUE_SIZE;
+   \   0000002A   0x785C             LDRB     R4,[R3, #+1]
+   \   0000002C   0x1C64             ADDS     R4,R4,#+1
+   \   0000002E   0x250A             MOVS     R5,#+10
+   \   00000030   0xFB94 0xF6F5      SDIV     R6,R4,R5
+   \   00000034   0xFB05 0x4416      MLS      R4,R5,R6,R4
+   \   00000038   0x705C             STRB     R4,[R3, #+1]
+     87                          buff->size--;
+   \   0000003A   0x781C             LDRB     R4,[R3, #+0]
+   \   0000003C   0x1E64             SUBS     R4,R4,#+1
+   \   0000003E   0x701C             STRB     R4,[R3, #+0]
+     88          
+     89                          return toReturn;
+   \   00000040   0xE001             B.N      ??channel_dequeue_1
+     90                      }
+     91                  }
+     92              }
+     93          
+     94              return RC_FAIL;
+   \                     ??channel_dequeue_0: (+1)
+   \   00000042   0xF05F 0x30FF      MOVS     R0,#-1
+   \                     ??channel_dequeue_1: (+1)
+   \   00000046   0xBC70             POP      {R4-R6}
+   \   00000048   0x4770             BX       LR               ;; return
+     95          }
+     96          
+
+   \                                 In section .text, align 2, keep-with-next
+     97          bool channel_is_empty(CHANNEL_TYPES type)
+     98          {
+   \                     channel_is_empty: (+1)
+   \   00000000   0x0001             MOVS     R1,R0
+     99              if(type < MAX_CHANNELS)
+   \   00000002   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \   00000004   0x2903             CMP      R1,#+3
+   \   00000006   0xDA0D             BGE.N    ??channel_is_empty_0
+    100              {
+    101                  _channel* channel = &(server.channels[type]);
+   \   00000008   0x....             LDR.N    R0,??DataTable4
+   \   0000000A   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \   0000000C   0x220C             MOVS     R2,#+12
+   \   0000000E   0xFB02 0xF201      MUL      R2,R2,R1
+   \   00000012   0x4402             ADD      R2,R0,R2
+    102                  if(channel->open == 1)
+   \   00000014   0x7A50             LDRB     R0,[R2, #+9]
+   \   00000016   0x2801             CMP      R0,#+1
+   \   00000018   0xD104             BNE.N    ??channel_is_empty_0
+    103                  {
+    104                      if(channel->buffer.size > 0)
+   \   0000001A   0x7810             LDRB     R0,[R2, #+0]
+   \   0000001C   0x2800             CMP      R0,#+0
+   \   0000001E   0xD001             BEQ.N    ??channel_is_empty_0
+    105                          return false;
+   \   00000020   0x2000             MOVS     R0,#+0
+   \   00000022   0xE000             B.N      ??channel_is_empty_1
+    106                  }
+    107              }
+    108          
+    109              return true;
+   \                     ??channel_is_empty_0: (+1)
+   \   00000024   0x2001             MOVS     R0,#+1
+   \                     ??channel_is_empty_1: (+1)
+   \   00000026   0x4770             BX       LR               ;; return
+    110          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4:
+   \   00000000   0x........         DC32     server
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      16   channel_close
+        16   -> free
+      12   channel_dequeue
+       0   channel_is_empty
+      16   channel_open
+        16   -> malloc
+      12   channel_send
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable4
+      60  channel_close
+      74  channel_dequeue
+      40  channel_is_empty
+      60  channel_open
+      76  channel_send
+      36  server
+
+ 
+  36 bytes in section .bss
+ 314 bytes in section .text
+ 
+ 314 bytes of CODE memory
+  36 bytes of DATA memory
+
+Errors: none
+Warnings: 1

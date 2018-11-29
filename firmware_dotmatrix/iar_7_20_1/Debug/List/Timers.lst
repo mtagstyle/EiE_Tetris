@@ -1,0 +1,310 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.70.1.11437/W32 for ARM       22/Mar/2018  01:24:52
+# Copyright 1999-2016 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_common\tetris\Timers.c
+#    Command line =  
+#        "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_common\tetris\Timers.c" -D
+#        MPGL2 -D MPG2 --preprocess=cl "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\Debug\List"
+#        -lC "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\Debug\List"
+#        -o "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\Debug\Obj"
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M3 -e --fpu=None --dlib_config "E:\Software\IAR
+#        Systems\Embedded Workbench 7.5\arm\INC\c\DLib_Config_Normal.h" -I
+#        "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\" -I
+#        "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\bsp\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\drivers\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\application\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\libraries\captouch\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\..\firmware_common\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\..\firmware_common\application\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\..\firmware_common\cmsis\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\..\firmware_common\drivers\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\..\firmware_common\tetris\"
+#        -On --use_c++_inline --require_prototypes -I "E:\Software\IAR
+#        Systems\Embedded Workbench 7.5\arm\CMSIS\Include\"
+#    Locale       =  English_Canada.1252
+#    List file    =  
+#        C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\Debug\List\Timers.lst
+#    Object file  =  
+#        C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\Debug\Obj\Timers.o
+#
+###############################################################################
+
+C:\Users\Anthony\Google Drive\Hobbies\IAR\Razor_Atmel\firmware_common\tetris\Timers.c
+      1          #include <stdlib.h>
+      2          #include <stdio.h>
+      3          
+      4          #include "Timers.h"
+
+  #define DEBUG_MODE 0
+          ^
+"C:\Users\Anthony\Google Drive\Hobbies\IAR\Razor_Atmel\firmware_common\tetris\Defs.h",27  Warning[Pe047]: 
+          incompatible redefinition of macro "DEBUG_MODE" (declared at line 27)
+      5          
+
+   \                                 In section .bss, align 4
+      6          static Timer *timerList[MAX_TIMERS] = { NULL };
+   \                     timerList:
+   \   00000000                      DS8 40
+      7          
+
+   \                                 In section .text, align 2, keep-with-next
+      8          void SM_RunTimers(void)
+      9          {
+     10              for(uint8_t i = 0 ; i < MAX_TIMERS; i++)
+   \                     SM_RunTimers: (+1)
+   \   00000000   0x2000             MOVS     R0,#+0
+   \                     ??SM_RunTimers_0: (+1)
+   \   00000002   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \   00000004   0x280A             CMP      R0,#+10
+   \   00000006   0xDA15             BGE.N    ??SM_RunTimers_1
+     11              {
+     12                  Timer* timer = timerList[i];
+   \   00000008   0x....             LDR.N    R1,??DataTable2
+   \   0000000A   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \   0000000C   0xF851 0x1020      LDR      R1,[R1, R0, LSL #+2]
+     13                  if(timer != NULL)
+   \   00000010   0x2900             CMP      R1,#+0
+   \   00000012   0xD00D             BEQ.N    ??SM_RunTimers_2
+     14                  {
+     15                      if(timer->active && (timer->triggered == false) )
+   \   00000014   0x7A4A             LDRB     R2,[R1, #+9]
+   \   00000016   0x2A00             CMP      R2,#+0
+   \   00000018   0xD00A             BEQ.N    ??SM_RunTimers_2
+   \   0000001A   0x7A0A             LDRB     R2,[R1, #+8]
+   \   0000001C   0x2A00             CMP      R2,#+0
+   \   0000001E   0xD107             BNE.N    ??SM_RunTimers_2
+     16                      {
+     17                          timer->value = timer->value - 1;
+   \   00000020   0x684A             LDR      R2,[R1, #+4]
+   \   00000022   0x1E52             SUBS     R2,R2,#+1
+   \   00000024   0x604A             STR      R2,[R1, #+4]
+     18                          
+     19                          if(timer->value <= 0)
+   \   00000026   0x684A             LDR      R2,[R1, #+4]
+   \   00000028   0x2A00             CMP      R2,#+0
+   \   0000002A   0xD101             BNE.N    ??SM_RunTimers_2
+     20                              timer->triggered = true;
+   \   0000002C   0x2201             MOVS     R2,#+1
+   \   0000002E   0x720A             STRB     R2,[R1, #+8]
+     21                      }
+     22                  }
+     23              }
+   \                     ??SM_RunTimers_2: (+1)
+   \   00000030   0x1C40             ADDS     R0,R0,#+1
+   \   00000032   0xE7E6             B.N      ??SM_RunTimers_0
+     24          }
+   \                     ??SM_RunTimers_1: (+1)
+   \   00000034   0x4770             BX       LR               ;; return
+     25          
+
+   \                                 In section .text, align 2, keep-with-next
+     26          Timer* timer_create(uint32_t ticks)
+     27          {
+   \                     timer_create: (+1)
+   \   00000000   0xB570             PUSH     {R4-R6,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     28              Timer* timer = NULL;
+   \   00000004   0x2500             MOVS     R5,#+0
+     29              for(uint8_t i = 0; i < MAX_TIMERS; i++)
+   \   00000006   0x2600             MOVS     R6,#+0
+   \                     ??timer_create_0: (+1)
+   \   00000008   0xB2F6             UXTB     R6,R6            ;; ZeroExt  R6,R6,#+24,#+24
+   \   0000000A   0x2E0A             CMP      R6,#+10
+   \   0000000C   0xDA16             BGE.N    ??timer_create_1
+     30              {
+     31                  if(timerList[i] == NULL)
+   \   0000000E   0x....             LDR.N    R0,??DataTable2
+   \   00000010   0xB2F6             UXTB     R6,R6            ;; ZeroExt  R6,R6,#+24,#+24
+   \   00000012   0xF850 0x0026      LDR      R0,[R0, R6, LSL #+2]
+   \   00000016   0x2800             CMP      R0,#+0
+   \   00000018   0xD10E             BNE.N    ??timer_create_2
+     32                  {
+     33                      timer = malloc(sizeof(Timer));
+   \   0000001A   0x2010             MOVS     R0,#+16
+   \   0000001C   0x.... 0x....      BL       malloc
+   \   00000020   0x0005             MOVS     R5,R0
+     34                      timer->active    = false;
+   \   00000022   0x2000             MOVS     R0,#+0
+   \   00000024   0x7268             STRB     R0,[R5, #+9]
+     35                      timer->triggered = false;
+   \   00000026   0x2000             MOVS     R0,#+0
+   \   00000028   0x7228             STRB     R0,[R5, #+8]
+     36                      timer->value     = ticks;
+   \   0000002A   0x606C             STR      R4,[R5, #+4]
+     37                      timer->reference = ticks;
+   \   0000002C   0x602C             STR      R4,[R5, #+0]
+     38          
+     39                      timerList[i] = timer;
+   \   0000002E   0x....             LDR.N    R0,??DataTable2
+   \   00000030   0xB2F6             UXTB     R6,R6            ;; ZeroExt  R6,R6,#+24,#+24
+   \   00000032   0xF840 0x5026      STR      R5,[R0, R6, LSL #+2]
+     40                      break;
+   \   00000036   0xE001             B.N      ??timer_create_1
+     41                  }
+     42              }
+   \                     ??timer_create_2: (+1)
+   \   00000038   0x1C76             ADDS     R6,R6,#+1
+   \   0000003A   0xE7E5             B.N      ??timer_create_0
+     43              
+     44              return timer;
+   \                     ??timer_create_1: (+1)
+   \   0000003C   0x0028             MOVS     R0,R5
+   \   0000003E   0xBD70             POP      {R4-R6,PC}       ;; return
+     45          }
+     46          
+
+   \                                 In section .text, align 2, keep-with-next
+     47          void timer_destroy(Timer* timer)
+     48          {
+   \                     timer_destroy: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     49              if( timer != NULL )
+   \   00000004   0x2C00             CMP      R4,#+0
+   \   00000006   0xD013             BEQ.N    ??timer_destroy_0
+     50              {
+     51                  for(uint8_t i = 0 ; i < MAX_TIMERS; i ++)
+   \   00000008   0x2000             MOVS     R0,#+0
+   \                     ??timer_destroy_1: (+1)
+   \   0000000A   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \   0000000C   0x280A             CMP      R0,#+10
+   \   0000000E   0xDA0C             BGE.N    ??timer_destroy_2
+     52                  {
+     53                      if(timer == timerList[i])
+   \   00000010   0x....             LDR.N    R1,??DataTable2
+   \   00000012   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \   00000014   0xF851 0x1020      LDR      R1,[R1, R0, LSL #+2]
+   \   00000018   0x428C             CMP      R4,R1
+   \   0000001A   0xD104             BNE.N    ??timer_destroy_3
+     54                      {
+     55                          timerList[i] = NULL;
+   \   0000001C   0x2100             MOVS     R1,#+0
+   \   0000001E   0x....             LDR.N    R2,??DataTable2
+   \   00000020   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \   00000022   0xF842 0x1020      STR      R1,[R2, R0, LSL #+2]
+     56                      }
+     57                  }
+   \                     ??timer_destroy_3: (+1)
+   \   00000026   0x1C40             ADDS     R0,R0,#+1
+   \   00000028   0xE7EF             B.N      ??timer_destroy_1
+     58                  free(timer);
+   \                     ??timer_destroy_2: (+1)
+   \   0000002A   0x0020             MOVS     R0,R4
+   \   0000002C   0x.... 0x....      BL       free
+     59              }
+     60          }
+   \                     ??timer_destroy_0: (+1)
+   \   00000030   0xBD10             POP      {R4,PC}          ;; return
+     61          
+
+   \                                 In section .text, align 2, keep-with-next
+     62          void timer_start(Timer* timer)
+     63          {
+     64              timer->active = true;
+   \                     timer_start: (+1)
+   \   00000000   0x2101             MOVS     R1,#+1
+   \   00000002   0x7241             STRB     R1,[R0, #+9]
+     65          }
+   \   00000004   0x4770             BX       LR               ;; return
+     66          
+
+   \                                 In section .text, align 2, keep-with-next
+     67          void timer_stop(Timer* timer)
+     68          {
+     69              timer->active = false;
+   \                     timer_stop: (+1)
+   \   00000000   0x2100             MOVS     R1,#+0
+   \   00000002   0x7241             STRB     R1,[R0, #+9]
+     70          }
+   \   00000004   0x4770             BX       LR               ;; return
+     71          
+
+   \                                 In section .text, align 2, keep-with-next
+     72          void timer_reset(Timer* timer)
+     73          {
+     74              timer->value = timer->reference;
+   \                     timer_reset: (+1)
+   \   00000000   0x6801             LDR      R1,[R0, #+0]
+   \   00000002   0x6041             STR      R1,[R0, #+4]
+     75              timer->triggered = false;
+   \   00000004   0x2100             MOVS     R1,#+0
+   \   00000006   0x7201             STRB     R1,[R0, #+8]
+     76          }
+   \   00000008   0x4770             BX       LR               ;; return
+     77          
+
+   \                                 In section .text, align 2, keep-with-next
+     78          bool timer_ready(Timer* timer)
+     79          {
+     80              return timer->triggered;
+   \                     timer_ready: (+1)
+   \   00000000   0x7A00             LDRB     R0,[R0, #+8]
+   \   00000002   0x4770             BX       LR               ;; return
+     81          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2:
+   \   00000000   0x........         DC32     timerList
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   SM_RunTimers
+      16   timer_create
+        16   -> malloc
+       8   timer_destroy
+         8   -> free
+       0   timer_ready
+       0   timer_reset
+       0   timer_start
+       0   timer_stop
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable2
+      54  SM_RunTimers
+      40  timerList
+      64  timer_create
+      50  timer_destroy
+       4  timer_ready
+      10  timer_reset
+       6  timer_start
+       6  timer_stop
+
+ 
+  40 bytes in section .bss
+ 198 bytes in section .text
+ 
+ 198 bytes of CODE memory
+  40 bytes of DATA memory
+
+Errors: none
+Warnings: 1

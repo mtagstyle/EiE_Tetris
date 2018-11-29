@@ -1,0 +1,457 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.70.1.11437/W32 for ARM       22/Mar/2018  01:24:50
+# Copyright 1999-2016 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_common\tetris\Grid.c
+#    Command line =  
+#        "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_common\tetris\Grid.c" -D MPGL2
+#        -D MPG2 --preprocess=cl "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\Debug\List"
+#        -lC "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\Debug\List"
+#        -o "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\Debug\Obj"
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M3 -e --fpu=None --dlib_config "E:\Software\IAR
+#        Systems\Embedded Workbench 7.5\arm\INC\c\DLib_Config_Normal.h" -I
+#        "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\" -I
+#        "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\bsp\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\drivers\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\application\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\libraries\captouch\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\..\firmware_common\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\..\firmware_common\application\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\..\firmware_common\cmsis\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\..\firmware_common\drivers\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\..\firmware_common\tetris\"
+#        -On --use_c++_inline --require_prototypes -I "E:\Software\IAR
+#        Systems\Embedded Workbench 7.5\arm\CMSIS\Include\"
+#    Locale       =  English_Canada.1252
+#    List file    =  
+#        C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\Debug\List\Grid.lst
+#    Object file  =  
+#        C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\Debug\Obj\Grid.o
+#
+###############################################################################
+
+C:\Users\Anthony\Google Drive\Hobbies\IAR\Razor_Atmel\firmware_common\tetris\Grid.c
+      1          #include <stdlib.h>
+      2          #include <stdio.h>
+      3          
+      4          #include "Grid.h"
+
+  #define DEBUG_MODE 0
+          ^
+"C:\Users\Anthony\Google Drive\Hobbies\IAR\Razor_Atmel\firmware_common\tetris\Defs.h",27  Warning[Pe047]: 
+          incompatible redefinition of macro "DEBUG_MODE" (declared at line 27)
+      5          
+
+   \                                 In section .text, align 2, keep-with-next
+      6          void flush_grid (Grid* grid)
+      7          {
+   \                     flush_grid: (+1)
+   \   00000000   0xB570             PUSH     {R4-R6,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+      8              if(grid != NULL)
+   \   00000004   0x2C00             CMP      R4,#+0
+   \   00000006   0xD01B             BEQ.N    ??flush_grid_0
+      9              {
+     10                  uint8_t x, y;
+     11                  for(x = 0; x < grid->numCols; x++)
+   \   00000008   0x2000             MOVS     R0,#+0
+   \   0000000A   0x0005             MOVS     R5,R0
+   \                     ??flush_grid_1: (+1)
+   \   0000000C   0x0028             MOVS     R0,R5
+   \   0000000E   0xF894 0x10F1      LDRB     R1,[R4, #+241]
+   \   00000012   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \   00000014   0x4288             CMP      R0,R1
+   \   00000016   0xD213             BCS.N    ??flush_grid_0
+     12                  {
+     13                      for(y = 0; y < grid->numRows; y++)
+   \   00000018   0x2000             MOVS     R0,#+0
+   \   0000001A   0x0006             MOVS     R6,R0
+   \                     ??flush_grid_2: (+1)
+   \   0000001C   0x0030             MOVS     R0,R6
+   \   0000001E   0xF894 0x10F0      LDRB     R1,[R4, #+240]
+   \   00000022   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \   00000024   0x4288             CMP      R0,R1
+   \   00000026   0xD209             BCS.N    ??flush_grid_3
+     14                      {
+     15                          set_grid(grid, x, y, 0);
+   \   00000028   0x2300             MOVS     R3,#+0
+   \   0000002A   0x0032             MOVS     R2,R6
+   \   0000002C   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \   0000002E   0x0029             MOVS     R1,R5
+   \   00000030   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \   00000032   0x0020             MOVS     R0,R4
+   \   00000034   0x.... 0x....      BL       set_grid
+     16                      }
+   \   00000038   0x1C76             ADDS     R6,R6,#+1
+   \   0000003A   0xE7EF             B.N      ??flush_grid_2
+     17                  }
+   \                     ??flush_grid_3: (+1)
+   \   0000003C   0x1C6D             ADDS     R5,R5,#+1
+   \   0000003E   0xE7E5             B.N      ??flush_grid_1
+     18              }
+     19          }
+   \                     ??flush_grid_0: (+1)
+   \   00000040   0xBD70             POP      {R4-R6,PC}       ;; return
+     20          
+     21          /**
+     22           * Deletes the row specified at y and collapses everything above it
+     23           */
+
+   \                                 In section .text, align 2, keep-with-next
+     24          void shift_grid_down (Grid* grid, uint8_t y)
+     25          {
+   \                     shift_grid_down: (+1)
+   \   00000000   0xB410             PUSH     {R4}
+     26              if(grid != NULL)
+   \   00000002   0x2800             CMP      R0,#+0
+   \   00000004   0xD02B             BEQ.N    ??shift_grid_down_0
+     27              {
+     28                  uint8_t x;
+     29          
+     30                  //Shift everything down
+     31                  for( y; y > 0 ; y-- )
+                              ^
+Warning[Pe174]: expression has no effect
+   \                     ??shift_grid_down_1: (+1)
+   \   00000006   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \   00000008   0x2900             CMP      R1,#+0
+   \   0000000A   0xD01B             BEQ.N    ??shift_grid_down_2
+     32                  {
+     33                      for( x = 0; x < grid->numCols ; x++ )
+   \   0000000C   0x2300             MOVS     R3,#+0
+   \   0000000E   0x001A             MOVS     R2,R3
+   \                     ??shift_grid_down_3: (+1)
+   \   00000010   0x0013             MOVS     R3,R2
+   \   00000012   0xF890 0x40F1      LDRB     R4,[R0, #+241]
+   \   00000016   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
+   \   00000018   0x42A3             CMP      R3,R4
+   \   0000001A   0xD211             BCS.N    ??shift_grid_down_4
+     34                      {
+     35                          grid->_grid[y][x] = grid->_grid[y-1][x];
+   \   0000001C   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \   0000001E   0x230A             MOVS     R3,#+10
+   \   00000020   0xFB03 0xF301      MUL      R3,R3,R1
+   \   00000024   0x4403             ADD      R3,R0,R3
+   \   00000026   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \   00000028   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \   0000002A   0x240A             MOVS     R4,#+10
+   \   0000002C   0xFB04 0xF401      MUL      R4,R4,R1
+   \   00000030   0x4404             ADD      R4,R0,R4
+   \   00000032   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \   00000034   0x4414             ADD      R4,R4,R2
+   \   00000036   0xF814 0x4C0A      LDRB     R4,[R4, #-10]
+   \   0000003A   0x549C             STRB     R4,[R3, R2]
+     36                      }
+   \   0000003C   0x1C52             ADDS     R2,R2,#+1
+   \   0000003E   0xE7E7             B.N      ??shift_grid_down_3
+     37                  }
+   \                     ??shift_grid_down_4: (+1)
+   \   00000040   0x1E49             SUBS     R1,R1,#+1
+   \   00000042   0xE7E0             B.N      ??shift_grid_down_1
+     38          
+     39                  //Set the top of the board to be empty
+     40                  for( x = 0; x< grid->numCols; x++ )
+   \                     ??shift_grid_down_2: (+1)
+   \   00000044   0x2300             MOVS     R3,#+0
+   \   00000046   0x001A             MOVS     R2,R3
+   \                     ??shift_grid_down_5: (+1)
+   \   00000048   0x0013             MOVS     R3,R2
+   \   0000004A   0xF890 0x40F1      LDRB     R4,[R0, #+241]
+   \   0000004E   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
+   \   00000050   0x42A3             CMP      R3,R4
+   \   00000052   0xD204             BCS.N    ??shift_grid_down_0
+     41                  {
+     42                      grid->_grid[0][x] = 0;
+   \   00000054   0x2300             MOVS     R3,#+0
+   \   00000056   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \   00000058   0x5483             STRB     R3,[R0, R2]
+     43                  }
+   \   0000005A   0x1C52             ADDS     R2,R2,#+1
+   \   0000005C   0xE7F4             B.N      ??shift_grid_down_5
+     44              }
+     45          }
+   \                     ??shift_grid_down_0: (+1)
+   \   0000005E   0xBC10             POP      {R4}
+   \   00000060   0x4770             BX       LR               ;; return
+     46          
+
+   \                                 In section .text, align 2, keep-with-next
+     47          uint8_t is_row_filled(Grid* grid, uint8_t y, uint8_t val)
+     48          {
+   \                     is_row_filled: (+1)
+   \   00000000   0xB470             PUSH     {R4-R6}
+   \   00000002   0x0003             MOVS     R3,R0
+     49              uint8_t retVal = 1;
+   \   00000004   0x2001             MOVS     R0,#+1
+     50          
+     51              if(grid != NULL)
+   \   00000006   0x2B00             CMP      R3,#+0
+   \   00000008   0xD016             BEQ.N    ??is_row_filled_0
+     52              {
+     53                  uint8_t x;
+     54                  
+     55                  for(x = 0;  x < grid->numCols; x++ )
+   \   0000000A   0x2500             MOVS     R5,#+0
+   \   0000000C   0x002C             MOVS     R4,R5
+   \                     ??is_row_filled_1: (+1)
+   \   0000000E   0x0025             MOVS     R5,R4
+   \   00000010   0xF893 0x60F1      LDRB     R6,[R3, #+241]
+   \   00000014   0xB2ED             UXTB     R5,R5            ;; ZeroExt  R5,R5,#+24,#+24
+   \   00000016   0x42B5             CMP      R5,R6
+   \   00000018   0xD20E             BCS.N    ??is_row_filled_0
+     56                  {
+     57                      if(grid->_grid[y][x] != val)
+   \   0000001A   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \   0000001C   0x250A             MOVS     R5,#+10
+   \   0000001E   0xFB05 0xF501      MUL      R5,R5,R1
+   \   00000022   0x441D             ADD      R5,R3,R5
+   \   00000024   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
+   \   00000026   0x5D2D             LDRB     R5,[R5, R4]
+   \   00000028   0x0016             MOVS     R6,R2
+   \   0000002A   0xB2F6             UXTB     R6,R6            ;; ZeroExt  R6,R6,#+24,#+24
+   \   0000002C   0x42B5             CMP      R5,R6
+   \   0000002E   0xD001             BEQ.N    ??is_row_filled_2
+     58                          retVal = 0;
+   \   00000030   0x2500             MOVS     R5,#+0
+   \   00000032   0x0028             MOVS     R0,R5
+     59                  }
+   \                     ??is_row_filled_2: (+1)
+   \   00000034   0x1C64             ADDS     R4,R4,#+1
+   \   00000036   0xE7EA             B.N      ??is_row_filled_1
+     60              }
+     61          
+     62              return retVal;
+   \                     ??is_row_filled_0: (+1)
+   \   00000038   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \   0000003A   0xBC70             POP      {R4-R6}
+   \   0000003C   0x4770             BX       LR               ;; return
+     63          }
+     64          
+
+   \                                 In section .text, align 2, keep-with-next
+     65          void set_grid (Grid* grid, uint8_t x, uint8_t y, uint8_t val)
+     66          {
+   \                     set_grid: (+1)
+   \   00000000   0xB410             PUSH     {R4}
+     67              if(grid != NULL)
+   \   00000002   0x2800             CMP      R0,#+0
+   \   00000004   0xD006             BEQ.N    ??set_grid_0
+     68              {
+     69                  grid->_grid[y][x] = val;
+   \   00000006   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \   00000008   0x240A             MOVS     R4,#+10
+   \   0000000A   0xFB04 0xF402      MUL      R4,R4,R2
+   \   0000000E   0x4404             ADD      R4,R0,R4
+   \   00000010   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \   00000012   0x5463             STRB     R3,[R4, R1]
+     70              }
+     71          }
+   \                     ??set_grid_0: (+1)
+   \   00000014   0xBC10             POP      {R4}
+   \   00000016   0x4770             BX       LR               ;; return
+     72          
+
+   \                                 In section .text, align 2, keep-with-next
+     73          Grid* create_grid(void)
+     74          {
+   \                     create_grid: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+     75              //Allocate the struct
+     76              Grid* toReturn = (Grid*)malloc(sizeof(Grid));
+   \   00000002   0x20F2             MOVS     R0,#+242
+   \   00000004   0x.... 0x....      BL       malloc
+     77              
+     78              toReturn->numCols = MAX_COL;
+   \   00000008   0x210A             MOVS     R1,#+10
+   \   0000000A   0xF880 0x10F1      STRB     R1,[R0, #+241]
+     79              toReturn->numRows = MAX_ROW;
+   \   0000000E   0x2118             MOVS     R1,#+24
+   \   00000010   0xF880 0x10F0      STRB     R1,[R0, #+240]
+     80          
+     81              uint8_t x,y;
+     82          
+     83              for(y = 0; y<MAX_ROW; y++)
+   \   00000014   0x2300             MOVS     R3,#+0
+   \   00000016   0x001A             MOVS     R2,R3
+   \                     ??create_grid_0: (+1)
+   \   00000018   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \   0000001A   0x2A18             CMP      R2,#+24
+   \   0000001C   0xDA10             BGE.N    ??create_grid_1
+     84              {
+     85                  for(x = 0; x<MAX_COL; x++)
+   \   0000001E   0x2300             MOVS     R3,#+0
+   \   00000020   0x0019             MOVS     R1,R3
+   \                     ??create_grid_2: (+1)
+   \   00000022   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \   00000024   0x290A             CMP      R1,#+10
+   \   00000026   0xDA09             BGE.N    ??create_grid_3
+     86                  {
+     87                      toReturn->_grid[y][x] = 0;
+   \   00000028   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \   0000002A   0x230A             MOVS     R3,#+10
+   \   0000002C   0xFB03 0xF302      MUL      R3,R3,R2
+   \   00000030   0x4403             ADD      R3,R0,R3
+   \   00000032   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \   00000034   0x2400             MOVS     R4,#+0
+   \   00000036   0x545C             STRB     R4,[R3, R1]
+     88                  }
+   \   00000038   0x1C49             ADDS     R1,R1,#+1
+   \   0000003A   0xE7F2             B.N      ??create_grid_2
+     89              }
+   \                     ??create_grid_3: (+1)
+   \   0000003C   0x1C52             ADDS     R2,R2,#+1
+   \   0000003E   0xE7EB             B.N      ??create_grid_0
+     90          
+     91              return toReturn;
+   \                     ??create_grid_1: (+1)
+   \   00000040   0xBD10             POP      {R4,PC}          ;; return
+     92          }
+     93          
+
+   \                                 In section .text, align 2, keep-with-next
+     94          void destroy_grid(Grid* toDestroy)
+     95          {
+   \                     destroy_grid: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     96              free(toDestroy->_grid);
+   \   00000004   0x0020             MOVS     R0,R4
+   \   00000006   0x.... 0x....      BL       free
+     97              free(toDestroy);
+   \   0000000A   0x0020             MOVS     R0,R4
+   \   0000000C   0x.... 0x....      BL       free
+     98          }
+   \   00000010   0xBD10             POP      {R4,PC}          ;; return
+     99          
+
+   \                                 In section .text, align 2, keep-with-next
+    100          void print_grid(Grid* grid)
+    101          {
+   \                     print_grid: (+1)
+   \   00000000   0xB570             PUSH     {R4-R6,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+    102              if(grid != NULL)
+   \   00000004   0x2C00             CMP      R4,#+0
+   \   00000006   0xD01A             BEQ.N    ??print_grid_0
+    103              {
+    104                  int row, col;
+    105                  for(row = 0; row < grid->numRows; row++)
+   \   00000008   0x2000             MOVS     R0,#+0
+   \   0000000A   0x0005             MOVS     R5,R0
+   \                     ??print_grid_1: (+1)
+   \   0000000C   0xF894 0x00F0      LDRB     R0,[R4, #+240]
+   \   00000010   0x4285             CMP      R5,R0
+   \   00000012   0xDA14             BGE.N    ??print_grid_0
+    106                  {
+    107                      for(col = 0; col< grid->numCols; col++)
+   \   00000014   0x2000             MOVS     R0,#+0
+   \   00000016   0x0006             MOVS     R6,R0
+   \                     ??print_grid_2: (+1)
+   \   00000018   0xF894 0x00F1      LDRB     R0,[R4, #+241]
+   \   0000001C   0x4286             CMP      R6,R0
+   \   0000001E   0xDA09             BGE.N    ??print_grid_3
+    108                      {
+    109                          printf("%d ", grid->_grid[row][col]);
+   \   00000020   0x200A             MOVS     R0,#+10
+   \   00000022   0xFB00 0xF005      MUL      R0,R0,R5
+   \   00000026   0x4420             ADD      R0,R4,R0
+   \   00000028   0x5D81             LDRB     R1,[R0, R6]
+   \   0000002A   0x....             ADR.N    R0,??DataTable0  ;; "%d "
+   \   0000002C   0x.... 0x....      BL       printf
+    110                      }
+   \   00000030   0x1C76             ADDS     R6,R6,#+1
+   \   00000032   0xE7F1             B.N      ??print_grid_2
+    111                      printf("\n");
+   \                     ??print_grid_3: (+1)
+   \   00000034   0x....             ADR.N    R0,??DataTable0_1  ;; "\n"
+   \   00000036   0x.... 0x....      BL       printf
+    112                  }
+   \   0000003A   0x1C6D             ADDS     R5,R5,#+1
+   \   0000003C   0xE7E6             B.N      ??print_grid_1
+    113              }
+    114          }
+   \                     ??print_grid_0: (+1)
+   \   0000003E   0xBD70             POP      {R4-R6,PC}       ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable0:
+   \   00000000   0x25 0x64          DC8      "%d "
+   \              0x20 0x00    
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable0_1:
+   \   00000000   0x0A 0x00          DC8      "\n",0x0,0x0
+   \              0x00 0x00    
+
+   \                                 In section .rodata, align 4
+   \   00000000   0x25 0x64          DC8 "%d "
+   \              0x20 0x00    
+
+   \                                 In section .rodata, align 2
+   \   00000000   0x0A 0x00          DC8 "\012"
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   create_grid
+         8   -> malloc
+       8   destroy_grid
+         8   -> free
+      16   flush_grid
+        16   -> set_grid
+      12   is_row_filled
+      16   print_grid
+        16   -> printf
+       4   set_grid
+       4   shift_grid_down
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable0
+       4  ??DataTable0_1
+       4  ?_0
+       2  ?_1
+      66  create_grid
+      18  destroy_grid
+      66  flush_grid
+      62  is_row_filled
+      64  print_grid
+      24  set_grid
+      98  shift_grid_down
+
+ 
+   6 bytes in section .rodata
+ 406 bytes in section .text
+ 
+ 406 bytes of CODE  memory
+   6 bytes of CONST memory
+
+Errors: none
+Warnings: 2

@@ -1,0 +1,288 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.70.1.11437/W32 for ARM       22/Mar/2018  01:24:49
+# Copyright 1999-2016 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_common\tetris\Audio.c
+#    Command line =  
+#        "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_common\tetris\Audio.c" -D MPGL2
+#        -D MPG2 --preprocess=cl "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\Debug\List"
+#        -lC "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\Debug\List"
+#        -o "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\Debug\Obj"
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M3 -e --fpu=None --dlib_config "E:\Software\IAR
+#        Systems\Embedded Workbench 7.5\arm\INC\c\DLib_Config_Normal.h" -I
+#        "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\" -I
+#        "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\bsp\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\drivers\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\application\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\libraries\captouch\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\..\firmware_common\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\..\firmware_common\application\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\..\firmware_common\cmsis\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\..\firmware_common\drivers\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\..\firmware_common\tetris\"
+#        -On --use_c++_inline --require_prototypes -I "E:\Software\IAR
+#        Systems\Embedded Workbench 7.5\arm\CMSIS\Include\"
+#    Locale       =  English_Canada.1252
+#    List file    =  
+#        C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\Debug\List\Audio.lst
+#    Object file  =  
+#        C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\Debug\Obj\Audio.o
+#
+###############################################################################
+
+C:\Users\Anthony\Google Drive\Hobbies\IAR\Razor_Atmel\firmware_common\tetris\Audio.c
+      1          #include "configuration.h"
+      2          #include "Audio.h"
+      3          #include "Timers.h"
+
+  #define DEBUG_MODE 0
+          ^
+"C:\Users\Anthony\Google Drive\Hobbies\IAR\Razor_Atmel\firmware_common\tetris\Defs.h",27  Warning[Pe047]: 
+          incompatible redefinition of macro "DEBUG_MODE" (declared at line 27)
+      4          
+
+   \                                 In section .rodata, align 4
+      5          const u16 TETRIS_THEME_KEYS[58] = {
+   \                     TETRIS_THEME_KEYS:
+   \   00000000   0x0293 0x01EE      DC16 659, 494, 523, 587, 523, 494, 440, 440, 523, 659, 587, 523, 494
+   \              0x020B 0x024B
+   \              0x020B 0x01EE
+   \              0x01B8 0x01B8
+   \              0x020B 0x0293
+   \              0x024B 0x020B
+   \              0x01EE       
+   \   0000001A   0x01EE 0x020B      DC16 494, 523, 587, 659, 523, 440, 440, 0, 587, 698, 880, 784, 698, 659
+   \              0x024B 0x0293
+   \              0x020B 0x01B8
+   \              0x01B8 0x0000
+   \              0x024B 0x02BA
+   \              0x0370 0x0310
+   \              0x02BA 0x0293
+   \   00000036   0x020B 0x0293      DC16 523, 659, 587, 523, 494, 494, 523, 587, 659, 523, 440, 440, 0, 330
+   \              0x024B 0x020B
+   \              0x01EE 0x01EE
+   \              0x020B 0x024B
+   \              0x0293 0x020B
+   \              0x01B8 0x01B8
+   \              0x0000 0x014A
+   \   00000052   0x0106 0x0126      DC16 262, 294, 245, 262, 220, 208, 245, 330, 262, 294, 245, 262, 330
+   \              0x00F5 0x0106
+   \              0x00DC 0x00D0
+   \              0x00F5 0x014A
+   \              0x0106 0x0126
+   \              0x00F5 0x0106
+   \              0x014A       
+   \   0000006C   0x01B8 0x01B8      DC16 440, 440, 415, 0
+   \              0x019F 0x0000
+      6             // part 1
+      7            NOTE_E5, NOTE_B4, NOTE_C5, NOTE_D5, NOTE_C5, NOTE_B4, NOTE_A4, NOTE_A4, NOTE_C5, NOTE_E5, NOTE_D5, NOTE_C5, NOTE_B4, NOTE_B4, NOTE_C5, NOTE_D5, NOTE_E5, NOTE_C5, NOTE_A4, NOTE_A4, NONE,
+      8            NOTE_D5, NOTE_F5, NOTE_A5, NOTE_G5, NOTE_F5, NOTE_E5, NOTE_C5, NOTE_E5, NOTE_D5, NOTE_C5, NOTE_B4, NOTE_B4, NOTE_C5, NOTE_D5, NOTE_E5, NOTE_C5, NOTE_A4, NOTE_A4, NONE,
+      9          
+     10            // part 2
+     11            NOTE_E4, NOTE_C4, NOTE_D4, NOTE_B3, NOTE_C4, NOTE_A3, NOTE_G3_SHARP, NOTE_B3,
+     12            NOTE_E4, NOTE_C4, NOTE_D4, NOTE_B3, NOTE_C4, NOTE_E4, NOTE_A4, NOTE_A4, NOTE_G4_SHARP, NONE
+     13          };
+     14          
+
+   \                                 In section .rodata, align 4
+     15          const u16 TETRIS_THEME_LENGTHS[58] = {
+   \                     TETRIS_THEME_LENGTHS:
+   \   00000000   0x0177 0x00BB      DC16 375, 187, 187, 375, 187, 187, 375, 187, 187, 375, 187, 187, 375
+   \              0x00BB 0x0177
+   \              0x00BB 0x00BB
+   \              0x0177 0x00BB
+   \              0x00BB 0x0177
+   \              0x00BB 0x00BB
+   \              0x0177       
+   \   0000001A   0x00BB 0x00BB      DC16 187, 187, 375, 375, 375, 375, 375, 375, 562, 187, 375, 187, 187
+   \              0x0177 0x0177
+   \              0x0177 0x0177
+   \              0x0177 0x0177
+   \              0x0232 0x00BB
+   \              0x0177 0x00BB
+   \              0x00BB       
+   \   00000034   0x0232 0x00BB      DC16 562, 187, 375, 187, 187, 375, 187, 187, 375, 375, 375, 375, 375
+   \              0x0177 0x00BB
+   \              0x00BB 0x0177
+   \              0x00BB 0x00BB
+   \              0x0177 0x0177
+   \              0x0177 0x0177
+   \              0x0177       
+   \   0000004E   0x0177 0x02EE      DC16 375, 750, 750, 750, 750, 750, 750, 750, 750, 750, 750, 750, 750
+   \              0x02EE 0x02EE
+   \              0x02EE 0x02EE
+   \              0x02EE 0x02EE
+   \              0x02EE 0x02EE
+   \              0x02EE 0x02EE
+   \              0x02EE       
+   \   00000068   0x0177 0x0177      DC16 375, 375, 375, 375, 1125, 375
+   \              0x0177 0x0177
+   \              0x0465 0x0177
+     16            // part 1
+     17            HALF_NOTE, QUARTER_NOTE, QUARTER_NOTE, HALF_NOTE, QUARTER_NOTE, QUARTER_NOTE, HALF_NOTE, QUARTER_NOTE, QUARTER_NOTE, HALF_NOTE, QUARTER_NOTE, QUARTER_NOTE, HALF_NOTE, QUARTER_NOTE, QUARTER_NOTE, HALF_NOTE, HALF_NOTE, HALF_NOTE, HALF_NOTE, HALF_NOTE, HALF_NOTE,
+     18            HALF_NOTE+QUARTER_NOTE, QUARTER_NOTE, HALF_NOTE, QUARTER_NOTE, QUARTER_NOTE, HALF_NOTE+QUARTER_NOTE, QUARTER_NOTE, HALF_NOTE, QUARTER_NOTE, QUARTER_NOTE, HALF_NOTE, QUARTER_NOTE, QUARTER_NOTE, HALF_NOTE, HALF_NOTE, HALF_NOTE, HALF_NOTE, HALF_NOTE, HALF_NOTE,
+     19          
+     20            // part 2
+     21            FULL_NOTE, FULL_NOTE, FULL_NOTE, FULL_NOTE, FULL_NOTE, FULL_NOTE, FULL_NOTE, FULL_NOTE,
+     22            FULL_NOTE, FULL_NOTE, FULL_NOTE, FULL_NOTE, HALF_NOTE, HALF_NOTE, HALF_NOTE, HALF_NOTE, HALF_NOTE*3, HALF_NOTE
+     23          };
+     24          
+
+   \                                 In section .bss, align 1
+     25          static uint8_t note_counter;
+   \                     note_counter:
+   \   00000000                      DS8 1
+
+   \                                 In section .bss, align 4
+     26          static Timer* audioTimer; 
+   \                     audioTimer:
+   \   00000000                      DS8 4
+
+   \                                 In section .text, align 2, keep-with-next
+     27          void Audio_Initialize()
+     28          {
+   \                     Audio_Initialize: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+     29              note_counter = 0;
+   \   00000002   0x2000             MOVS     R0,#+0
+   \   00000004   0x....             LDR.N    R1,??DataTable1
+   \   00000006   0x7008             STRB     R0,[R1, #+0]
+     30              audioTimer = timer_create(1);
+   \   00000008   0x2001             MOVS     R0,#+1
+   \   0000000A   0x.... 0x....      BL       timer_create
+   \   0000000E   0x....             LDR.N    R1,??DataTable1_1
+   \   00000010   0x6008             STR      R0,[R1, #+0]
+     31              timer_start(audioTimer);
+   \   00000012   0x....             LDR.N    R0,??DataTable1_1
+   \   00000014   0x6800             LDR      R0,[R0, #+0]
+   \   00000016   0x.... 0x....      BL       timer_start
+     32          }
+   \   0000001A   0xBD01             POP      {R0,PC}          ;; return
+
+   \                                 In section .text, align 2, keep-with-next
+     33          void Audio_RunActiveState()
+     34          {
+   \                     Audio_RunActiveState: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+     35              if(timer_ready(audioTimer))
+   \   00000002   0x....             LDR.N    R0,??DataTable1_1
+   \   00000004   0x6800             LDR      R0,[R0, #+0]
+   \   00000006   0x.... 0x....      BL       timer_ready
+   \   0000000A   0x2800             CMP      R0,#+0
+   \   0000000C   0xD020             BEQ.N    ??Audio_RunActiveState_0
+     36              {
+     37                  PWMAudioSetFrequency(BUZZER1, TETRIS_THEME_KEYS[note_counter]);
+   \   0000000E   0x....             LDR.N    R0,??DataTable1_2
+   \   00000010   0x....             LDR.N    R1,??DataTable1
+   \   00000012   0x7809             LDRB     R1,[R1, #+0]
+   \   00000014   0xF830 0x1011      LDRH     R1,[R0, R1, LSL #+1]
+   \   00000018   0x2001             MOVS     R0,#+1
+   \   0000001A   0x.... 0x....      BL       PWMAudioSetFrequency
+     38                  audioTimer->reference = TETRIS_THEME_LENGTHS[note_counter]; 
+   \   0000001E   0x....             LDR.N    R0,??DataTable1_3
+   \   00000020   0x....             LDR.N    R1,??DataTable1
+   \   00000022   0x7809             LDRB     R1,[R1, #+0]
+   \   00000024   0xF830 0x0011      LDRH     R0,[R0, R1, LSL #+1]
+   \   00000028   0x....             LDR.N    R1,??DataTable1_1
+   \   0000002A   0x6809             LDR      R1,[R1, #+0]
+   \   0000002C   0x6008             STR      R0,[R1, #+0]
+     39                  note_counter= ((note_counter+1) % 58);
+   \   0000002E   0x....             LDR.N    R0,??DataTable1
+   \   00000030   0x7800             LDRB     R0,[R0, #+0]
+   \   00000032   0x1C40             ADDS     R0,R0,#+1
+   \   00000034   0x213A             MOVS     R1,#+58
+   \   00000036   0xFB90 0xF2F1      SDIV     R2,R0,R1
+   \   0000003A   0xFB01 0x0012      MLS      R0,R1,R2,R0
+   \   0000003E   0x....             LDR.N    R1,??DataTable1
+   \   00000040   0x7008             STRB     R0,[R1, #+0]
+     40                  timer_reset(audioTimer);
+   \   00000042   0x....             LDR.N    R0,??DataTable1_1
+   \   00000044   0x6800             LDR      R0,[R0, #+0]
+   \   00000046   0x.... 0x....      BL       timer_reset
+     41                  PWMAudioOn(BUZZER1);
+   \   0000004A   0x2001             MOVS     R0,#+1
+   \   0000004C   0x.... 0x....      BL       PWMAudioOn
+     42              }
+     43          }
+   \                     ??Audio_RunActiveState_0: (+1)
+   \   00000050   0xBD01             POP      {R0,PC}          ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1:
+   \   00000000   0x........         DC32     note_counter
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_1:
+   \   00000000   0x........         DC32     audioTimer
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_2:
+   \   00000000   0x........         DC32     TETRIS_THEME_KEYS
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_3:
+   \   00000000   0x........         DC32     TETRIS_THEME_LENGTHS
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   Audio_Initialize
+         8   -> timer_create
+         8   -> timer_start
+       8   Audio_RunActiveState
+         8   -> PWMAudioOn
+         8   -> PWMAudioSetFrequency
+         8   -> timer_ready
+         8   -> timer_reset
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable1
+       4  ??DataTable1_1
+       4  ??DataTable1_2
+       4  ??DataTable1_3
+      28  Audio_Initialize
+      82  Audio_RunActiveState
+     116  TETRIS_THEME_KEYS
+     116  TETRIS_THEME_LENGTHS
+       4  audioTimer
+       1  note_counter
+
+ 
+   5 bytes in section .bss
+ 232 bytes in section .rodata
+ 126 bytes in section .text
+ 
+ 126 bytes of CODE  memory
+ 232 bytes of CONST memory
+   5 bytes of DATA  memory
+
+Errors: none
+Warnings: 1

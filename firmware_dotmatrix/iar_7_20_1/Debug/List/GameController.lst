@@ -1,0 +1,447 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V7.70.1.11437/W32 for ARM       22/Mar/2018  01:40:10
+# Copyright 1999-2016 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_common\tetris\GameController.c
+#    Command line =  
+#        "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_common\tetris\GameController.c"
+#        -D MPGL2 -D MPG2 --preprocess=cl "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\Debug\List"
+#        -lC "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\Debug\List"
+#        -o "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\Debug\Obj"
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M3 -e --fpu=None --dlib_config "E:\Software\IAR
+#        Systems\Embedded Workbench 7.5\arm\INC\c\DLib_Config_Normal.h" -I
+#        "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\" -I
+#        "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\bsp\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\drivers\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\application\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\libraries\captouch\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\..\firmware_common\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\..\firmware_common\application\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\..\firmware_common\cmsis\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\..\firmware_common\drivers\"
+#        -I "C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\..\..\firmware_common\tetris\"
+#        -On --use_c++_inline --require_prototypes -I "E:\Software\IAR
+#        Systems\Embedded Workbench 7.5\arm\CMSIS\Include\"
+#    Locale       =  English_Canada.1252
+#    List file    =  
+#        C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\Debug\List\GameController.lst
+#    Object file  =  
+#        C:\Users\Anthony\Google
+#        Drive\Hobbies\IAR\Razor_Atmel\firmware_dotmatrix\iar_7_20_1\Debug\Obj\GameController.o
+#
+###############################################################################
+
+C:\Users\Anthony\Google Drive\Hobbies\IAR\Razor_Atmel\firmware_common\tetris\GameController.c
+      1          #include "GameController.h"
+      2          #include "GameLogic.h"
+
+  #define DEBUG_MODE 0
+          ^
+"C:\Users\Anthony\Google Drive\Hobbies\IAR\Razor_Atmel\firmware_common\tetris\Defs.h",27  Warning[Pe047]: 
+          incompatible redefinition of macro "DEBUG_MODE" (declared at line 27)
+      3          #include "Tetromino.h"
+      4          #include "Grid.h"
+      5          #include "Timers.h"
+      6          #include "GUI.h"
+      7          #include "InputController.h"
+      8          #include "Commands.h"
+      9          #include "Audio.h"
+     10          
+
+   \                                 In section .bss, align 4
+     11          static GameInstance game;
+   \                     game:
+   \   00000000                      DS8 20
+
+   \                                 In section .bss, align 4
+     12          static Timer *gui_timer, *controls_timer, *game_timer, *audio_timer;
+                                                                         ^
+Warning[Pe177]: variable "audio_timer" was declared but never referenced
+   \                     gui_timer:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     controls_timer:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     game_timer:
+   \   00000000                      DS8 4
+     13          
+
+   \                                 In section .text, align 2, keep-with-next
+     14          void GameControllerInitialize(void)
+     15          {
+   \                     GameControllerInitialize: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+     16              Initialize(&game);
+   \   00000002   0x....             LDR.N    R0,??DataTable3
+   \   00000004   0x.... 0x....      BL       Initialize
+     17              InputController_Initialize();
+   \   00000008   0x.... 0x....      BL       InputController_Initialize
+     18              Audio_Initialize();
+   \   0000000C   0x.... 0x....      BL       Audio_Initialize
+     19          
+     20              gui_timer =        timer_create(2);
+   \   00000010   0x2002             MOVS     R0,#+2
+   \   00000012   0x.... 0x....      BL       timer_create
+   \   00000016   0x....             LDR.N    R1,??DataTable3_1
+   \   00000018   0x6008             STR      R0,[R1, #+0]
+     21              controls_timer =   timer_create(25);
+   \   0000001A   0x2019             MOVS     R0,#+25
+   \   0000001C   0x.... 0x....      BL       timer_create
+   \   00000020   0x....             LDR.N    R1,??DataTable3_2
+   \   00000022   0x6008             STR      R0,[R1, #+0]
+     22              game_timer =       timer_create(100);
+   \   00000024   0x2064             MOVS     R0,#+100
+   \   00000026   0x.... 0x....      BL       timer_create
+   \   0000002A   0x....             LDR.N    R1,??DataTable3_3
+   \   0000002C   0x6008             STR      R0,[R1, #+0]
+     23              
+     24              timer_start(gui_timer);
+   \   0000002E   0x....             LDR.N    R0,??DataTable3_1
+   \   00000030   0x6800             LDR      R0,[R0, #+0]
+   \   00000032   0x.... 0x....      BL       timer_start
+     25              timer_start(controls_timer);
+   \   00000036   0x....             LDR.N    R0,??DataTable3_2
+   \   00000038   0x6800             LDR      R0,[R0, #+0]
+   \   0000003A   0x.... 0x....      BL       timer_start
+     26              timer_start(game_timer);
+   \   0000003E   0x....             LDR.N    R0,??DataTable3_3
+   \   00000040   0x6800             LDR      R0,[R0, #+0]
+   \   00000042   0x.... 0x....      BL       timer_start
+     27          
+     28              channel_open(CHANNEL_GAMECONTROLLER);
+   \   00000046   0x2002             MOVS     R0,#+2
+   \   00000048   0x.... 0x....      BL       channel_open
+     29          }
+   \   0000004C   0xBD01             POP      {R0,PC}          ;; return
+
+   \                                 In section .text, align 2, keep-with-next
+     30          void GameController_RunActiveState(void)
+     31          {
+   \                     GameController_RunActiveState: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+     32              update_game();
+   \   00000002   0x.... 0x....      BL       update_game
+     33              update_gui();
+   \   00000006   0x.... 0x....      BL       update_gui
+     34              update_controls();
+   \   0000000A   0x.... 0x....      BL       update_controls
+     35              update_audio();
+   \   0000000E   0x.... 0x....      BL       update_audio
+     36          }
+   \   00000012   0xBD01             POP      {R0,PC}          ;; return
+
+   \                                 In section .text, align 2, keep-with-next
+     37          void update_gui(void)
+     38          {
+   \                     update_gui: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+     39              while(!channel_is_empty(CHANNEL_GAMECONTROLLER))
+   \                     ??update_gui_0: (+1)
+   \   00000002   0x2002             MOVS     R0,#+2
+   \   00000004   0x.... 0x....      BL       channel_is_empty
+   \   00000008   0x2800             CMP      R0,#+0
+   \   0000000A   0xD11C             BNE.N    ??update_gui_1
+     40              {
+     41                  sint32_t mesg = channel_dequeue(CHANNEL_GAMECONTROLLER);
+   \   0000000C   0x2002             MOVS     R0,#+2
+   \   0000000E   0x.... 0x....      BL       channel_dequeue
+   \   00000012   0x0004             MOVS     R4,R0
+     42                  switch(mesg)
+   \   00000014   0x2C07             CMP      R4,#+7
+   \   00000016   0xD006             BEQ.N    ??update_gui_2
+   \   00000018   0xD3F3             BCC.N    ??update_gui_0
+   \   0000001A   0x2C09             CMP      R4,#+9
+   \   0000001C   0xD00B             BEQ.N    ??update_gui_3
+   \   0000001E   0xD306             BCC.N    ??update_gui_4
+   \   00000020   0x2C0A             CMP      R4,#+10
+   \   00000022   0xD00B             BEQ.N    ??update_gui_5
+   \   00000024   0xE7ED             B.N      ??update_gui_0
+     43                  {
+     44                      case MESSAGE_GUI_BLOCK_UPDATE:
+     45                          GUIPrintTetromino(&game);
+   \                     ??update_gui_2: (+1)
+   \   00000026   0x....             LDR.N    R0,??DataTable3
+   \   00000028   0x.... 0x....      BL       GUIPrintTetromino
+     46                      break;
+   \   0000002C   0xE7E9             B.N      ??update_gui_0
+     47          
+     48                      case MESSAGE_GUI_GRID_UPDATE:
+     49                          GUIPrintGrid(&game);
+   \                     ??update_gui_4: (+1)
+   \   0000002E   0x....             LDR.N    R0,??DataTable3
+   \   00000030   0x.... 0x....      BL       GUIPrintGrid
+     50                      break;
+   \   00000034   0xE7E5             B.N      ??update_gui_0
+     51          
+     52                      case MESSAGE_GUI_BORDER_UPDATE:
+     53                          GUIPrintBorders();
+   \                     ??update_gui_3: (+1)
+   \   00000036   0x.... 0x....      BL       GUIPrintBorders
+     54                      break;
+   \   0000003A   0xE7E2             B.N      ??update_gui_0
+     55          
+     56                      case MESSAGE_GUI_SCORE_UPDATE:
+     57                          GUIPrintScore(game.score);
+   \                     ??update_gui_5: (+1)
+   \   0000003C   0x....             LDR.N    R0,??DataTable3
+   \   0000003E   0x8900             LDRH     R0,[R0, #+8]
+   \   00000040   0x.... 0x....      BL       GUIPrintScore
+     58                      break;
+   \   00000044   0xE7DD             B.N      ??update_gui_0
+     59                  }
+     60              }
+     61          }
+   \                     ??update_gui_1: (+1)
+   \   00000046   0xBD10             POP      {R4,PC}          ;; return
+
+   \                                 In section .text, align 2, keep-with-next
+     62          void update_controls(void)
+     63          {
+   \                     update_controls: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+     64              if(timer_ready(controls_timer))
+   \   00000002   0x....             LDR.N    R0,??DataTable3_2
+   \   00000004   0x6800             LDR      R0,[R0, #+0]
+   \   00000006   0x.... 0x....      BL       timer_ready
+   \   0000000A   0x2800             CMP      R0,#+0
+   \   0000000C   0xD005             BEQ.N    ??update_controls_0
+     65              {
+     66                  InputController_RunInputController();
+   \   0000000E   0x.... 0x....      BL       InputController_RunInputController
+     67                  
+     68                  timer_reset(controls_timer);
+   \   00000012   0x....             LDR.N    R0,??DataTable3_2
+   \   00000014   0x6800             LDR      R0,[R0, #+0]
+   \   00000016   0x.... 0x....      BL       timer_reset
+     69              }
+     70          
+     71              if(!channel_is_empty(CHANNEL_GAMECONTROLLER))
+   \                     ??update_controls_0: (+1)
+   \   0000001A   0x2002             MOVS     R0,#+2
+   \   0000001C   0x.... 0x....      BL       channel_is_empty
+   \   00000020   0x2800             CMP      R0,#+0
+   \   00000022   0xD12C             BNE.N    ??update_controls_1
+     72              {
+     73                  sint32_t mesg = channel_dequeue(CHANNEL_GAMECONTROLLER);
+   \   00000024   0x2002             MOVS     R0,#+2
+   \   00000026   0x.... 0x....      BL       channel_dequeue
+   \   0000002A   0x0004             MOVS     R4,R0
+     74                  switch(mesg)
+   \   0000002C   0x2C01             CMP      R4,#+1
+   \   0000002E   0xD009             BEQ.N    ??update_controls_2
+   \   00000030   0xD325             BCC.N    ??update_controls_1
+   \   00000032   0x2C03             CMP      R4,#+3
+   \   00000034   0xD014             BEQ.N    ??update_controls_3
+   \   00000036   0xD30C             BCC.N    ??update_controls_4
+   \   00000038   0x2C05             CMP      R4,#+5
+   \   0000003A   0xD013             BEQ.N    ??update_controls_5
+   \   0000003C   0xD311             BCC.N    ??update_controls_6
+   \   0000003E   0x2C06             CMP      R4,#+6
+   \   00000040   0xD017             BEQ.N    ??update_controls_7
+   \   00000042   0xE01C             B.N      ??update_controls_1
+     75                  {
+     76                      case MESSAGE_INPUT_A:
+     77                          Control_RotateRight(game.gridPtr, game.blockPtr);
+   \                     ??update_controls_2: (+1)
+   \   00000044   0x....             LDR.N    R0,??DataTable3
+   \   00000046   0x6841             LDR      R1,[R0, #+4]
+   \   00000048   0x....             LDR.N    R0,??DataTable3
+   \   0000004A   0x6800             LDR      R0,[R0, #+0]
+   \   0000004C   0x.... 0x....      BL       Control_RotateRight
+     78                      break;
+   \   00000050   0xE015             B.N      ??update_controls_1
+     79          
+     80                      case MESSAGE_INPUT_B:
+     81                          Control_RotateLeft(game.gridPtr, game.blockPtr);
+   \                     ??update_controls_4: (+1)
+   \   00000052   0x....             LDR.N    R0,??DataTable3
+   \   00000054   0x6841             LDR      R1,[R0, #+4]
+   \   00000056   0x....             LDR.N    R0,??DataTable3
+   \   00000058   0x6800             LDR      R0,[R0, #+0]
+   \   0000005A   0x.... 0x....      BL       Control_RotateLeft
+     82                      break;
+   \   0000005E   0xE00E             B.N      ??update_controls_1
+     83              
+     84                      case MESSAGE_INPUT_UP:
+     85                      break;
+   \                     ??update_controls_3: (+1)
+   \   00000060   0xE00D             B.N      ??update_controls_1
+     86          
+     87                      case MESSAGE_INPUT_DOWN:
+     88                      break;
+   \                     ??update_controls_6: (+1)
+   \   00000062   0xE00C             B.N      ??update_controls_1
+     89          
+     90                      case MESSAGE_INPUT_LEFT:
+     91                          Control_MoveLeft(game.gridPtr, game.blockPtr);
+   \                     ??update_controls_5: (+1)
+   \   00000064   0x....             LDR.N    R0,??DataTable3
+   \   00000066   0x6841             LDR      R1,[R0, #+4]
+   \   00000068   0x....             LDR.N    R0,??DataTable3
+   \   0000006A   0x6800             LDR      R0,[R0, #+0]
+   \   0000006C   0x.... 0x....      BL       Control_MoveLeft
+     92                      break;
+   \   00000070   0xE005             B.N      ??update_controls_1
+     93          
+     94                      case MESSAGE_INPUT_RIGHT:
+     95                          Control_MoveRight(game.gridPtr, game.blockPtr);
+   \                     ??update_controls_7: (+1)
+   \   00000072   0x....             LDR.N    R0,??DataTable3
+   \   00000074   0x6841             LDR      R1,[R0, #+4]
+   \   00000076   0x....             LDR.N    R0,??DataTable3
+   \   00000078   0x6800             LDR      R0,[R0, #+0]
+   \   0000007A   0x.... 0x....      BL       Control_MoveRight
+     96                      break;            
+     97                  }
+     98              }
+     99          }
+   \                     ??update_controls_1: (+1)
+   \   0000007E   0xBD10             POP      {R4,PC}          ;; return
+
+   \                                 In section .text, align 2, keep-with-next
+    100          void update_audio(void)
+    101          {
+   \                     update_audio: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+    102              Audio_RunActiveState();
+   \   00000002   0x.... 0x....      BL       Audio_RunActiveState
+    103          }
+   \   00000006   0xBD01             POP      {R0,PC}          ;; return
+
+   \                                 In section .text, align 2, keep-with-next
+    104          void update_game(void)
+    105          {
+   \                     update_game: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+    106              if(timer_ready(game_timer))
+   \   00000002   0x....             LDR.N    R0,??DataTable3_3
+   \   00000004   0x6800             LDR      R0,[R0, #+0]
+   \   00000006   0x.... 0x....      BL       timer_ready
+   \   0000000A   0x2800             CMP      R0,#+0
+   \   0000000C   0xD007             BEQ.N    ??update_game_0
+    107              {
+    108                  game.runState(&game);
+   \   0000000E   0x....             LDR.N    R0,??DataTable3
+   \   00000010   0x....             LDR.N    R1,??DataTable3
+   \   00000012   0x6909             LDR      R1,[R1, #+16]
+   \   00000014   0x4788             BLX      R1
+    109          
+    110                  timer_reset(game_timer);
+   \   00000016   0x....             LDR.N    R0,??DataTable3_3
+   \   00000018   0x6800             LDR      R0,[R0, #+0]
+   \   0000001A   0x.... 0x....      BL       timer_reset
+    111              }
+    112          }
+   \                     ??update_game_0: (+1)
+   \   0000001E   0xBD01             POP      {R0,PC}          ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3:
+   \   00000000   0x........         DC32     game
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_1:
+   \   00000000   0x........         DC32     gui_timer
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_2:
+   \   00000000   0x........         DC32     controls_timer
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_3:
+   \   00000000   0x........         DC32     game_timer
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   GameControllerInitialize
+         8   -> Audio_Initialize
+         8   -> Initialize
+         8   -> InputController_Initialize
+         8   -> channel_open
+         8   -> timer_create
+         8   -> timer_start
+       8   GameController_RunActiveState
+         8   -> update_audio
+         8   -> update_controls
+         8   -> update_game
+         8   -> update_gui
+       8   update_audio
+         8   -> Audio_RunActiveState
+       8   update_controls
+         8   -> Control_MoveLeft
+         8   -> Control_MoveRight
+         8   -> Control_RotateLeft
+         8   -> Control_RotateRight
+         8   -> InputController_RunInputController
+         8   -> channel_dequeue
+         8   -> channel_is_empty
+         8   -> timer_ready
+         8   -> timer_reset
+       8   update_game
+         8   -- Indirect call
+         8   -> timer_ready
+         8   -> timer_reset
+       8   update_gui
+         8   -> GUIPrintBorders
+         8   -> GUIPrintGrid
+         8   -> GUIPrintScore
+         8   -> GUIPrintTetromino
+         8   -> channel_dequeue
+         8   -> channel_is_empty
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable3
+       4  ??DataTable3_1
+       4  ??DataTable3_2
+       4  ??DataTable3_3
+      78  GameControllerInitialize
+      20  GameController_RunActiveState
+       4  controls_timer
+      20  game
+       4  game_timer
+       4  gui_timer
+       8  update_audio
+     128  update_controls
+      32  update_game
+      72  update_gui
+
+ 
+  32 bytes in section .bss
+ 354 bytes in section .text
+ 
+ 354 bytes of CODE memory
+  32 bytes of DATA memory
+
+Errors: none
+Warnings: 2
